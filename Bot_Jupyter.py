@@ -19,15 +19,6 @@ reddit = praw.Reddit('bot1')
 subreddit = reddit.subreddit('sikh')
 
 
-# In[26]:
-
-for submission in subreddit.hot(limit=7):
-    print("Title: ", submission.title)
-    print("Text: ", submission.selftext)
-    print("Score: ", submission.score)
-    print("---------------------------\n")
-
-
 # In[28]:
 
 if not os.path.isfile("posts_replied_to.txt"):
