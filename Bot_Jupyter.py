@@ -31,13 +31,13 @@ else:
         posts_replied_to = list(filter(None,posts_replied_to))
 
 
-# In[5]:
+# In[19]:
 
 subreddit = reddit.subreddit('sikh')
-for submission in subreddit.hot(limit=5):
+for submission in subreddit.hot(limit=10):
         if submission.id not in posts_replied_to:
             if re.search("sikhism", str([submission.selftext, submission.title]), re.IGNORECASE):
-                if re.search("sikhi", str([submission.selftext, submission.title]), re.IGNORECASE):
+                if re.search("sikhi\s", str([submission.selftext, submission.title]), re.IGNORECASE):
                     pass
                 else:
                     submission.reply("Thank you for your post. It's 'Sikhi', not 'Sikhism'.")
@@ -45,7 +45,7 @@ for submission in subreddit.hot(limit=5):
                     posts_replied_to.append(submission.id)
 
 
-# In[6]:
+# In[20]:
 
 with open("posts_replied_to.txt", "w") as f:
     for post_id in posts_replied_to:
